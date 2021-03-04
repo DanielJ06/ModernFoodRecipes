@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/recipe_row_layout_container"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:layout_height="wrap_content"
     android:layout_marginTop="4dp"
     android:layout_marginBottom="4dp">
 
@@ -13,9 +13,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
-        app:flow_horizontalBias="0.5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="@color/lightMediumGray"
@@ -29,7 +29,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/recipe_image_view"
                 android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,6 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/recipe_image_view"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,7 +60,7 @@
                 android:layout_marginTop="6dp"
                 android:ellipsize="end"
                 android:maxLines="3"
-                android:text="TextView"
+                android:text="@string/loren_ipsum"
                 android:textColor="@color/darkGray"
                 app:layout_constraintEnd_toEndOf="@+id/title_text_view"
                 app:layout_constraintStart_toStartOf="@+id/title_text_view"
@@ -71,17 +70,21 @@
                 android:id="@+id/likes_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="24dp"
                 app:layout_constraintEnd_toEndOf="@id/likes_text_view"
                 app:layout_constraintStart_toStartOf="@+id/description_text_view"
                 app:layout_constraintTop_toBottomOf="@+id/description_text_view"
-                app:srcCompat="@drawable/ic_heart" />
+                app:srcCompat="@drawable/ic_heart"
+                app:tint="@color/red" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/likes_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:text="100"
+                android:textAlignment="center"
+                android:textColor="@color/red"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@id/description_text_view"
                 app:layout_constraintTop_toBottomOf="@id/likes_icon" />
@@ -90,18 +93,21 @@
                 android:id="@+id/time_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="24dp"
                 app:layout_constraintEnd_toEndOf="@id/time_text_view"
                 app:layout_constraintStart_toStartOf="@+id/time_text_view"
                 app:layout_constraintTop_toBottomOf="@+id/description_text_view"
-                app:srcCompat="@drawable/ic_clock" />
+                app:srcCompat="@drawable/ic_clock"
+                app:tint="@color/yellow" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/time_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
+                android:layout_marginBottom="16dp"
                 android:text="100"
+                android:textColor="@color/yellow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/likes_text_view"
                 app:layout_constraintTop_toBottomOf="@id/time_icon" />
@@ -110,7 +116,7 @@
                 android:id="@+id/vegan_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="24dp"
                 app:layout_constraintEnd_toEndOf="@id/vegan_text_view"
                 app:layout_constraintStart_toStartOf="@+id/vegan_text_view"
                 app:layout_constraintTop_toBottomOf="@+id/description_text_view"
@@ -121,6 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
+                android:layout_marginBottom="16dp"
                 android:text="100"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/time_text_view"
