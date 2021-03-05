@@ -1,6 +1,6 @@
 package com.example.foody
 
-class Constrants {
+class Constants {
 
     companion object {
 
