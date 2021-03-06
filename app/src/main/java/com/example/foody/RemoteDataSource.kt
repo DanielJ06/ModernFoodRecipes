@@ -1,6 +1,16 @@
 package com.example.foody
 
 import android.app.Application
+import com.example.foody.models.FoodRecipe
+import retrofit2.Response
+import javax.inject.Inject
 
-class RemoteDataSource {
+class RemoteDataSource @Inject constructor(
+    private val foodRecipesApi: FoodRecipesApi
+) {
+
+    suspend fun getRecipes(queries: Map<String, String>): Response<FoodRecipe> {
+        return foodRecipesApi.getRecipes(queries)
+    }
+
 }
