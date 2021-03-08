@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="result"
             type="com.example.foody.models.Result" />
@@ -53,13 +54,14 @@
                     android:layout_marginEnd="12dp"
                     android:ellipsize="end"
                     android:maxLines="2"
-                    android:text="TextView"
+                    android:text="@{result.title}"
                     android:textColor="@color/darker"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/recipe_image_view"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Recipe title" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/description_text_view"
@@ -68,11 +70,12 @@
                     android:layout_marginTop="6dp"
                     android:ellipsize="end"
                     android:maxLines="3"
-                    android:text="@string/loren_ipsum"
+                    android:text="@{result.summary}"
                     android:textColor="@color/darkGray"
                     app:layout_constraintEnd_toEndOf="@+id/title_text_view"
                     app:layout_constraintStart_toStartOf="@+id/title_text_view"
-                    app:layout_constraintTop_toBottomOf="@+id/title_text_view" />
+                    app:layout_constraintTop_toBottomOf="@+id/title_text_view"
+                    tools:text="@string/loren_ipsum" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/likes_icon"
@@ -87,15 +90,16 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/likes_text_view"
+                    setNumberOfLikes="@{result.aggregateLikes}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:text="100"
                     android:textAlignment="center"
                     android:textColor="@color/red"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@id/description_text_view"
-                    app:layout_constraintTop_toBottomOf="@id/likes_icon" />
+                    app:layout_constraintTop_toBottomOf="@id/likes_icon"
+                    tools:text="100" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/time_icon"
@@ -110,18 +114,20 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/time_text_view"
+                    setNumberOfMinutes="@{result.readyInMinutes}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginBottom="16dp"
-                    android:text="100"
                     android:textColor="@color/yellow"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/likes_text_view"
-                    app:layout_constraintTop_toBottomOf="@id/time_icon" />
+                    app:layout_constraintTop_toBottomOf="@id/time_icon"
+                    tools:text="100" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/vegan_icon"
+                    applyVeganColor="@{result.vegan}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
@@ -132,14 +138,15 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/vegan_text_view"
+                    applyVeganColor="@{result.vegan}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginBottom="16dp"
-                    android:text="100"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/time_text_view"
-                    app:layout_constraintTop_toBottomOf="@id/vegan_icon" />
+                    app:layout_constraintTop_toBottomOf="@id/vegan_icon"
+                    tools:text="Vegan" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
