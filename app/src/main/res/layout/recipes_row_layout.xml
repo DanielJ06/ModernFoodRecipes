@@ -1,140 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/recipe_row_layout_container"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/row_cardView"
-        android:layout_width="0dp"
+    <data>
+        <variable
+            name="result"
+            type="com.example.foody.models.Result" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/recipe_row_layout_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="@color/lightMediumGray"
-        app:strokeWidth="1dp">
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/row_cardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/lightMediumGray"
+            app:strokeWidth="1dp">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/recipe_image_view"
-                android:layout_width="200dp"
-                android:layout_height="0dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/title_text_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="12dp"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:text="TextView"
-                android:textColor="@color/darker"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/recipe_image_view"
-                app:layout_constraintTop_toTopOf="parent" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/recipe_image_view"
+                    android:layout_width="200dp"
+                    android:layout_height="0dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/description_text_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:ellipsize="end"
-                android:maxLines="3"
-                android:text="@string/loren_ipsum"
-                android:textColor="@color/darkGray"
-                app:layout_constraintEnd_toEndOf="@+id/title_text_view"
-                app:layout_constraintStart_toStartOf="@+id/title_text_view"
-                app:layout_constraintTop_toBottomOf="@+id/title_text_view" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="TextView"
+                    android:textColor="@color/darker"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/recipe_image_view"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/likes_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                app:layout_constraintEnd_toEndOf="@id/likes_text_view"
-                app:layout_constraintStart_toStartOf="@+id/description_text_view"
-                app:layout_constraintTop_toBottomOf="@+id/description_text_view"
-                app:srcCompat="@drawable/ic_heart"
-                app:tint="@color/red" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/description_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:text="@string/loren_ipsum"
+                    android:textColor="@color/darkGray"
+                    app:layout_constraintEnd_toEndOf="@+id/title_text_view"
+                    app:layout_constraintStart_toStartOf="@+id/title_text_view"
+                    app:layout_constraintTop_toBottomOf="@+id/title_text_view" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/likes_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="100"
-                android:textAlignment="center"
-                android:textColor="@color/red"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@id/description_text_view"
-                app:layout_constraintTop_toBottomOf="@id/likes_icon" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/likes_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintEnd_toEndOf="@id/likes_text_view"
+                    app:layout_constraintStart_toStartOf="@+id/description_text_view"
+                    app:layout_constraintTop_toBottomOf="@+id/description_text_view"
+                    app:srcCompat="@drawable/ic_heart"
+                    app:tint="@color/red" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/time_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                app:layout_constraintEnd_toEndOf="@id/time_text_view"
-                app:layout_constraintStart_toStartOf="@+id/time_text_view"
-                app:layout_constraintTop_toBottomOf="@+id/description_text_view"
-                app:srcCompat="@drawable/ic_clock"
-                app:tint="@color/yellow" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/likes_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="100"
+                    android:textAlignment="center"
+                    android:textColor="@color/red"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/description_text_view"
+                    app:layout_constraintTop_toBottomOf="@id/likes_icon" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/time_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginBottom="16dp"
-                android:text="100"
-                android:textColor="@color/yellow"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/likes_text_view"
-                app:layout_constraintTop_toBottomOf="@id/time_icon" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/time_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintEnd_toEndOf="@id/time_text_view"
+                    app:layout_constraintStart_toStartOf="@+id/time_text_view"
+                    app:layout_constraintTop_toBottomOf="@+id/description_text_view"
+                    app:srcCompat="@drawable/ic_clock"
+                    app:tint="@color/yellow" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/vegan_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                app:layout_constraintEnd_toEndOf="@id/vegan_text_view"
-                app:layout_constraintStart_toStartOf="@+id/vegan_text_view"
-                app:layout_constraintTop_toBottomOf="@+id/description_text_view"
-                app:srcCompat="@drawable/ic_leaf" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/time_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="100"
+                    android:textColor="@color/yellow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/likes_text_view"
+                    app:layout_constraintTop_toBottomOf="@id/time_icon" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/vegan_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginBottom="16dp"
-                android:text="100"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/time_text_view"
-                app:layout_constraintTop_toBottomOf="@id/vegan_icon" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/vegan_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintEnd_toEndOf="@id/vegan_text_view"
+                    app:layout_constraintStart_toStartOf="@+id/vegan_text_view"
+                    app:layout_constraintTop_toBottomOf="@+id/description_text_view"
+                    app:srcCompat="@drawable/ic_leaf" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/vegan_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="100"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/time_text_view"
+                    app:layout_constraintTop_toBottomOf="@id/vegan_icon" />
 
-    </com.google.android.material.card.MaterialCardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
