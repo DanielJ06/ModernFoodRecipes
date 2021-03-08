@@ -8,6 +8,7 @@ import com.example.foody.databinding.RecipesRowLayoutBinding
 import com.example.foody.models.FoodRecipe
 import com.example.foody.models.Result
 import com.example.foody.util.RecipesDiffUtil
+import dagger.hilt.android.AndroidEntryPoint
 
 class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
 

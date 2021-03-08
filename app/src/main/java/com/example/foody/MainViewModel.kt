@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -12,14 +13,13 @@ import com.example.foody.models.FoodRecipe
 import com.example.foody.util.NetworkResult
 import kotlinx.coroutines.launch
 import retrofit2.Response
-import javax.inject.Inject
 
-class MainViewModel @Inject constructor(
+class MainViewModel @ViewModelInject constructor(
     private val repository: Repository,
     application: Application
 ) : AndroidViewModel(application) {
 
-    private val recipesResponse : MutableLiveData<NetworkResult<FoodRecipe>> = MutableLiveData()
+    var recipesResponse: MutableLiveData<NetworkResult<FoodRecipe>> = MutableLiveData()
 
     fun getRecipes(queries: Map<String, String>) = viewModelScope.launch {
         getRecipesSafeCall(queries)
@@ -64,7 +64,8 @@ class MainViewModel @Inject constructor(
             Context.CONNECTIVITY_SERVICE
         ) as ConnectivityManager
         val activityNetwork = connectivityManager.activeNetwork ?: return false
-        val capabilities = connectivityManager.getNetworkCapabilities(activityNetwork) ?: return false
+        val capabilities =
+            connectivityManager.getNetworkCapabilities(activityNetwork) ?: return false
         return when {
             capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
             capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
