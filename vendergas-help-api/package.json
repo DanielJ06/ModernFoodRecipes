@@ -1,0 +1,19 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
+    "express": "^4.17.1",
+    "gray-matter": "^4.0.2",
+    "mustache": "^4.0.1",
+    "nodemon": "^2.0.6",
+    "shortid": "^2.2.16"
+  },
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "cross-env NODE_ENV=production NODE_TLS_REJECT_UNAUTHORIZED=0 pm2 start src/index.js --name help"
+  }
+}
