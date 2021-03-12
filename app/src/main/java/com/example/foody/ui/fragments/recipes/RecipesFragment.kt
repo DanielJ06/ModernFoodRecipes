@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foody.viewmodels.MainViewModel
 import com.example.foody.R
 import com.example.foody.adapters.RecipesAdapter
+import com.example.foody.databinding.FragmentRecipesBinding
 import com.example.foody.util.Constants.Companion.API_KEY
 import com.example.foody.util.NetworkResult
 import com.example.foody.util.observeOnce
@@ -24,9 +25,11 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class RecipesFragment : Fragment() {
 
+    private var _binding: FragmentRecipesBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var mainViewModel: MainViewModel
     private lateinit var recipeViewModel: RecipesViewModel
-    private lateinit var mView: View
     private val mAdapter by lazy { RecipesAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,17 +43,20 @@ class RecipesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        mView = inflater.inflate(R.layout.fragment_recipes, container, false)
+        _binding = FragmentRecipesBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        binding.mainViewModel = mainViewModel
+
         setupRecyclerView()
 
         readDatabase()
 
-        return mView
+        return binding.root
     }
 
     private fun setupRecyclerView() {
-        mView.shimmer_recycler_view.adapter = mAdapter
-        mView.shimmer_recycler_view.layoutManager = LinearLayoutManager(requireContext())
+        binding.shimmerRecyclerView.adapter = mAdapter
+        binding.shimmerRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         showShimmer()
     }
 
@@ -96,16 +102,23 @@ class RecipesFragment : Fragment() {
     private fun loadDataFromCache() {
         lifecycleScope.launch {
             mainViewModel.readRecipes.observe(viewLifecycleOwner, { database ->
-                mAdapter.setData(database[0].foodRecipe)
+                if (database.isNotEmpty()) {
+                    mAdapter.setData(database[0].foodRecipe)
+                }
             })
         }
     }
 
     private fun showShimmer() {
-        mView.shimmer_recycler_view.showShimmer()
+        binding.shimmerRecyclerView.showShimmer()
     }
 
     private fun hideShimmerEffect() {
-        mView.shimmer_recycler_view.hideShimmer()
+        binding.shimmerRecyclerView.hideShimmer()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
